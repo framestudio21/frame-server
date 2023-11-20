@@ -164,4 +164,17 @@ app.post('/advertisement', async (req, res) => {
     .catch((error) => console.log(error));
 })
 
+//advertisement
+const Feedback = require("./feedbackmodule")
+app.post('/feedback', async (req, res) => {
+  const { name, email, text } = req.body
+
+  const feedback = new Feedback({ name, email, text })
+
+  await feedback
+    .save()
+    .then(() => res.status(200).json({ success: "success" }))
+    .catch((error) => console.log(error));
+})
+
 module.exports = app;
