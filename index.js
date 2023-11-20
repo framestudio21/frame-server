@@ -147,4 +147,21 @@ app.post('/contact', async (req, res) => {
     .catch((error) => console.log(error));
 })
 
+//advertisement
+const Adv = require("./advmodule")
+app.post('/advertisement', async (req, res) => {
+  const {
+   category, description, name, tag, thumbnail
+  } = req.body
+
+  const adv = new Adv({
+   category, description, name, tag, thumbnail
+  })
+
+  await adv
+    .save()
+    .then(() => res.status(200).json({ success: "success" }))
+    .catch((error) => console.log(error));
+})
+
 module.exports = app;
