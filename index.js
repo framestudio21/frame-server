@@ -130,4 +130,21 @@ app.post('/digitalart', async (req, res) => {
     .catch((error) => console.log(error));
 })
 
+//contact
+const Contact = require("./contactmodule")
+app.post('/contact', async (req, res) => {
+  const {
+    category, city, email, firstname, lastname, message, phone, subject
+  } = req.body
+
+  const contact = new Contact({
+    category, city, email, firstname, lastname, message, phone, subject
+  })
+
+  await contact
+    .save()
+    .then(() => res.status(200).json({ success: "success" }))
+    .catch((error) => console.log(error));
+})
+
 module.exports = app;
