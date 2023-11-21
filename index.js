@@ -27,7 +27,6 @@ app.post("/admin", async (req, res) => {
   });
 });
 
-
 //post data
 const Product = require("./productmodule")
 app.post('/product', async (req, res) => {
@@ -134,65 +133,53 @@ app.post('/feedback', async (req, res) => {
 app.get("/advertisement", (req, res) => {
   Adv.find()
     .sort({ createdAt: -1 })
-    .then((data) => {
-      res.json(data);
-    });
+    .then((data) => {res.json(data)})
 });
 app.get("/feedback", (req, res) => {
   Feedback.find()
-    .sort({ createdAt: -1 })
-    .then((data) => {
-      res.json(data);
-    });
+  .sort({ createdAt: -1 })
+  .then((data) => {res.json(data)})
 });
 app.get("/contact", (req, res) => {
   Contact.find()
-    .sort({ createdAt: -1 })
-    .then((data) => {
-      res.json(data);
-    });
-});
-app.get("/advertisement", (req, res) => {
-  Adv.find()
-    .sort({ createdAt: -1 })
-    .then((data) => {
-      res.json(data);
-    });
+  .sort({ createdAt: -1 })
+  .then((data) => {res.json(data)})
 });
 app.get("/digitalart", (req, res) => {
   Digitalart.find()
-    .sort({ createdAt: -1 })
-    .then((data) => {
-      res.json(data);
-    });
+  .sort({ createdAt: -1 })
+  .then((data) => {res.json(data)})
 });
 app.get("/aiart", (req, res) => {
   Aiart.find()
-    .sort({ createdAt: -1 })
-    .then((data) => {
-      res.json(data);
-    });
+  .sort({ createdAt: -1 })
+  .then((data) => {res.json(data)})
 });
 app.get("/photography", (req, res) => {
   Photography.find()
     .sort({ createdAt: -1 })
-    .then((data) => {
-      res.json(data);
-    });
+    .then((data) => {res.json(data)})
 });
 app.get("/product", (req, res) => {
   Product.find()
     .sort({ createdAt: -1 })
-    .then((data) => {
-      res.json(data);
-    });
+    .then((data) => {res.json(data)})
 });
-app.get("/advertisement", (req, res) => {
-  Adv.find()
-    .sort({ createdAt: -1 })
-    .then((data) => {
-      res.json(data);
-    });
+app.get("/product/:id", (req, res) => {
+  const { id } = req.params
+  Product.find({_id : id}).then((data) => {res.json(data)}).catch(()=>res.json("failed to fetch"))
+});
+app.get("/photography/:id", (req, res) => {
+  const { id } = req.params
+  Photography.find({_id : id}).then((data) => {res.json(data)}).catch(()=>res.json("failed to fetch"))
+});
+app.get("/aiart/:id", (req, res) => {
+  const { id } = req.params
+  Aiart.find({_id : id}).then((data) => {res.json(data)}).catch(()=>res.json("failed to fetch"))
+});
+app.get("/digitalart/:id", (req, res) => {
+  const { id } = req.params
+  Digitalart.find({_id : id}).then((data) => {res.json(data)}).catch(()=>res.json("failed to fetch"))
 });
 
 
