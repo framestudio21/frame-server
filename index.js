@@ -28,41 +28,7 @@ app.post("/admin", async (req, res) => {
 });
 
 
-
-// get data
-// app.get("/:path/:id", (req, res) => {
-//   const { id } = req.params;
-//   const { path } = req.params;
-//   Image.find({ _id: id, designtype: path }).then((data) => {
-//     res.send(data);
-//   });
-// });
-
-// app.get("/product", (req, res) => {
-//   product.find()
-//     .sort({ createdAt: -1 })
-//     .then((data) => {
-//       res.send(data);
-//     });
-// });
-
-
-// app.delete("/image/:id", (req, res) => {
-//   const { id } = req.params;
-//   Image.findByIdAndDelete({ _id: id }).then(() => res.send({ status: "ok" }));
-// });
-
-// app.delete("/adv/:id", (req, res) => {
-//   const { id } = req.params;
-//   Addvertisement.findByIdAndDelete({ _id: id }).then(() =>
-//     res.send({ status: "ok" })
-//   );
-// });
-
-
-
 //post data
-//product
 const Product = require("./productmodule")
 app.post('/product', async (req, res) => {
   const {
@@ -76,8 +42,6 @@ app.post('/product', async (req, res) => {
     .then(() => res.status(200).json({ success: "success" }))
     .catch((error) => console.log(error));
 })
-
-//photography
 const Photography = require("./photographymodule")
 app.post('/photography', async (req, res) => {
   const {
@@ -93,9 +57,6 @@ app.post('/photography', async (req, res) => {
     .then(() => res.status(200).json({ success: "success" }))
     .catch((error) => console.log(error));
 })
-
-
-//ai art
 const Aiart = require("./aiartmodule")
 app.post('/aiart', async (req, res) => {
   const {
@@ -111,9 +72,6 @@ app.post('/aiart', async (req, res) => {
     .then(() => res.status(200).json({ success: "success" }))
     .catch((error) => console.log(error));
 })
-
-
-//digital art
 const Digitalart = require("./digitalartmodule")
 app.post('/digitalart', async (req, res) => {
   const {
@@ -129,8 +87,6 @@ app.post('/digitalart', async (req, res) => {
     .then(() => res.status(200).json({ success: "success" }))
     .catch((error) => console.log(error));
 })
-
-//contact
 const Contact = require("./contactmodule")
 app.post('/contact', async (req, res) => {
   const {
@@ -146,8 +102,6 @@ app.post('/contact', async (req, res) => {
     .then(() => res.status(200).json({ success: "success" }))
     .catch((error) => console.log(error));
 })
-
-//advertisement
 const Adv = require("./advmodule")
 app.post('/advertisement', async (req, res) => {
   const {
@@ -163,8 +117,6 @@ app.post('/advertisement', async (req, res) => {
     .then(() => res.status(200).json({ success: "success" }))
     .catch((error) => console.log(error));
 })
-
-//advertisement
 const Feedback = require("./feedbackmodule")
 app.post('/feedback', async (req, res) => {
   const { name, email, text } = req.body
@@ -176,5 +128,103 @@ app.post('/feedback', async (req, res) => {
     .then(() => res.status(200).json({ success: "success" }))
     .catch((error) => console.log(error));
 })
+
+
+// get data
+app.get("/advertisement", (req, res) => {
+  Adv.find()
+    .sort({ createdAt: -1 })
+    .then((data) => {
+      res.json(data);
+    });
+});
+app.get("/feedback", (req, res) => {
+  Feedback.find()
+    .sort({ createdAt: -1 })
+    .then((data) => {
+      res.json(data);
+    });
+});
+app.get("/contact", (req, res) => {
+  Contact.find()
+    .sort({ createdAt: -1 })
+    .then((data) => {
+      res.json(data);
+    });
+});
+app.get("/advertisement", (req, res) => {
+  Adv.find()
+    .sort({ createdAt: -1 })
+    .then((data) => {
+      res.json(data);
+    });
+});
+app.get("/digitalart", (req, res) => {
+  Digitalart.find()
+    .sort({ createdAt: -1 })
+    .then((data) => {
+      res.json(data);
+    });
+});
+app.get("/aiart", (req, res) => {
+  Aiart.find()
+    .sort({ createdAt: -1 })
+    .then((data) => {
+      res.json(data);
+    });
+});
+app.get("/photography", (req, res) => {
+  Photography.find()
+    .sort({ createdAt: -1 })
+    .then((data) => {
+      res.json(data);
+    });
+});
+app.get("/product", (req, res) => {
+  Product.find()
+    .sort({ createdAt: -1 })
+    .then((data) => {
+      res.json(data);
+    });
+});
+app.get("/advertisement", (req, res) => {
+  Adv.find()
+    .sort({ createdAt: -1 })
+    .then((data) => {
+      res.json(data);
+    });
+});
+
+
+//delete - data
+app.delete("/product/:id", (req, res) => {
+  const { id } = req.params;
+  Product.findByIdAndDelete({ _id: id }).then(() => res.send({ status: "ok" }));
+});
+app.delete("/photography/:id", (req, res) => {
+  const { id } = req.params;
+  Photography.findByIdAndDelete({ _id: id }).then(() => res.send({ status: "ok" }));
+});
+app.delete("/aiart/:id", (req, res) => {
+  const { id } = req.params;
+  Aiart.findByIdAndDelete({ _id: id }).then(() => res.send({ status: "ok" }));
+});
+app.delete("/digitalart/:id", (req, res) => {
+  const { id } = req.params;
+  Digitalart.findByIdAndDelete({ _id: id }).then(() => res.send({ status: "ok" }));
+});
+app.delete("/contact/:id", (req, res) => {
+  const { id } = req.params;
+  Contact.findByIdAndDelete({ _id: id }).then(() => res.send({ status: "ok" }));
+});
+app.delete("/feedback/:id", (req, res) => {
+  const { id } = req.params;
+  Feedback.findByIdAndDelete({ _id: id }).then(() => res.send({ status: "ok" }));
+});
+app.delete("/advertisement/:id", (req, res) => {
+  const { id } = req.params;
+  Adv.findByIdAndDelete({ _id: id }).then(() => res.send({ status: "ok" }));
+});
+
 
 module.exports = app;
