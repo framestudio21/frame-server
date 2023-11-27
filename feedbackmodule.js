@@ -1,9 +1,9 @@
 const mongoose = require('mongoose')
 
 const model = new mongoose.Schema({
+    email: String,
     name: String,
-    email: String, 
-    text: String,
-}, {timestamps:true})
+    text: String
+}, { timestamps: true })
 
-module.exports = mongoose.model("Feedback",model)
+module.exports = mongoose.model("feedback", model)
