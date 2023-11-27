@@ -167,21 +167,23 @@ app.get("/product", (req, res) => {
 });
 app.get("/product/:id", (req, res) => {
   const { id } = req.params
-  Product.find({_id : id}).then((data) => {res.json(data)}).catch(()=>res.json("failed to fetch"))
+  Product.findOne({_id : id}).then((data) => {res.json(data)}).catch(()=>res.json("failed to fetch"))
 });
 app.get("/photography/:id", (req, res) => {
   const { id } = req.params
-  Photography.find({_id : id}).then((data) => {res.json(data)}).catch(()=>res.json("failed to fetch"))
+  Photography.findOne({_id : id}).then((data) => {res.json(data)}).catch(()=>res.json("failed to fetch"))
 });
 app.get("/aiart/:id", (req, res) => {
   const { id } = req.params
-  Aiart.find({_id : id}).then((data) => {res.json(data)}).catch(()=>res.json("failed to fetch"))
+  Aiart.findOne({_id : id}).then((data) => {res.json(data)}).catch(()=>res.json("failed to fetch"))
 });
 app.get("/digitalart/:id", (req, res) => {
   const { id } = req.params
-  Digitalart.find({_id : id}).then((data) => {res.json(data)}).catch(()=>res.json("failed to fetch"))
+  Digitalart.findOne({_id : id}).then((data) => {res.json(data)}).catch(()=>res.json("failed to fetch"))
 });
-
+app.get("/*", (req, res) => {
+  res.json({err: "failed to find"})
+});
 
 //delete - data
 app.delete("/product/:id", (req, res) => {
